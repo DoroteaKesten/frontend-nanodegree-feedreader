@@ -13,7 +13,7 @@ $(function() {
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
     */
-    describe('RSS Feeds', function() {
+    describe('RSS Feeds', () => {
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
          * empty. Experiment with this before you get started on
@@ -31,7 +31,7 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-         it('has URL defined', () => {
+         it('have URLs defined', () => {
             allFeeds.forEach((item) => {
                 expect(item.url).toBeDefined();
                 expect(item.url).not.toBe('');
@@ -43,29 +43,44 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-         it('has name defined', () => {
+         it('have names defined', () => {
             allFeeds.forEach((item) => {
                 expect(item.name).toBeDefined();
-                expect(item.name).not.toBe('');
+                expect(item.name).not.toBe(true);
             });
          });
     });
 
 
     /* TODO: Write a new test suite named "The menu" */
-
+    describe('The menu', () => {
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
+         const body = document.querySelector('body');
+
+         it('is hidden by default', () => {
+              expect(body.className).toBe('menu-hidden');
+         });
 
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+          it('hides or reveals on click', () => {
+              const menuIcon = document.querySelector('.menu-icon-link');
 
+              menuIcon.click();
+              expect(body.className).toBe('');
+
+              menuIcon.click();
+              expect(body.className).toBe('menu-hidden');
+
+          });
+    });
     /* TODO: Write a new test suite named "Initial Entries" */
 
         /* TODO: Write a test that ensures when the loadFeed
