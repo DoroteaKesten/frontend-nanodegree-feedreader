@@ -13,7 +13,7 @@ FEND P5
 
 This project is a part of Google Udacity Front-End Developer Nanodegree. With provided code for Feed Reader, the assignment was to write test suites in order to see if the reader loads new entries etc.
 
-## What to use it?
+## How to use it?
 
 If you want to try out if the reader passes all the tests, download it and unzip. Open index.html file in your browser and at the bottom you will find all the written tests that reader passed.
 
