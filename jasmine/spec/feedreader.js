@@ -88,7 +88,7 @@ $(function() {
         // Make sure that test runs after asynchronous loadFeed function
         beforeEach((done) => {
            loadFeed(0, done);
-        })
+        });
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -101,14 +101,30 @@ $(function() {
             // Select all entry elements in HTML
             const entries = document.querySelectorAll('.entry')
             expect(entries.length >= 0).toBe(true);
-         })
+         });
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', () => {
 
+        let oldFeed, newFeed;
+        // Grab old feed entries
+        beforeEach((done) => {
+           loadFeed(0, () => {
+              oldFeed = document.querySelector(".feed").innerHTML;
+              done();
+           });
+        });
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-
+         it('loads new content', (done) => {
+            loadFeed(1, () => {
+                newFeed = document.querySelector(".feed").innerHTML;
+                expect(oldFeed).not.toBe(newFeed);
+                done();
+            });
+         });
+    });
 }());
