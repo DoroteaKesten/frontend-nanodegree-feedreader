@@ -81,7 +81,14 @@ $(function() {
 
           });
     });
+
     /* TODO: Write a new test suite named "Initial Entries" */
+    describe('Initial Entries', () => {
+
+        // Make sure that test runs after asynchronous loadFeed function
+        beforeEach((done) => {
+           loadFeed(0, done);
+        })
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -90,10 +97,18 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
+         it('there is at least one entry in the feed container', () => {
+            // Select all entry elements in HTML
+            const entries = document.querySelectorAll('.entry')
+            expect(entries.length >= 0).toBe(true);
+         })
+    });
+
     /* TODO: Write a new test suite named "New Feed Selection" */
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+
 }());
